@@ -23,6 +23,8 @@ namespace UniversityApiBackend.Controllers
 
         // Usuarios de ejemplo
         // TODO: Cambiar por usuarios reales
+
+
         private IEnumerable<User> Logins = new List<User>()
         {
             new User()
@@ -47,25 +49,36 @@ namespace UniversityApiBackend.Controllers
             try
             {
                 var Token = new UserTokens();
-                var Valid = Logins.Any(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
-                if (Valid)
+
+                var searchUser = (from user in _context.Users
+                                 where user.Name == userLogin.UserName && user.Password == userLogin.Password
+                                 select user).FirstOrDefault();
+
+                Console.WriteLine($"Usuario encontrado {searchUser}");
+
+                // var Valid = Logins.Any(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
+
+                
+                if (searchUser != null)
                 {
-                    var user = Logins.FirstOrDefault(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
+                    //var user = Logins.FirstOrDefault(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
 
                     Token = JwtHelpers.GenTokenKey(new UserTokens()
                     {
-                        Id = user.Id,
-                        UserName = user.Name,
-                        EmailId = user.Email,
+                        Id = searchUser.Id,
+                        UserName = searchUser.Name,
+                        EmailId = searchUser.Email,
                         GuidId = Guid.NewGuid()
                     }, _jwtSettings);
-                } else
+                }
+                else
                 {
                     return BadRequest("Credenciales inválidas");
                 }
                 return Ok(Token);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw new Exception("Se obtuvo un error de token", ex);
             }
         }
