@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 15px;
+}
+
+h1{
+    color:darkblue;
+    font-size: 30pt;
+}
+
+.primera_noticia{
+    color: green;
+    font-size: 1.5em;
+}
+
+p {
+    color: darkblue;
+    font-size:2em;
+}
+
+*.warning{
+    color: red;
+}
+
+.ubicacion, .autor, .fecha{
+    text-decoration: underline;
+}
