@@ -1,0 +1,43 @@
+.contenedor {
+    width: 300px;
+    height: 100px;
+    background-color: aquamarine;
+}
+
+span.frase {
+    font-style: italic;
+}
+
+span.frase::before { /* Sirve para colocar algo al principio del elemento*/
+    content: '<<';
+    font-size: xx-small;
+}
+
+span.frase::after { /* Sirve para colocar algo al final del elemento*/
+    content: ' >>';
+    font-size: xx-small;
+}
+
+.libro {
+    background-color: bisque;
+    padding: 15px;
+    font-family: Arial;
+}
+
+.libro p::first-letter { /* Hace referencia a la primera letra de un elemento */
+    font-size: xx-large;
+}
+
+.libro p:first-line {
+    color: white;
+}
+
+.libro p::selection { /* Hace referencia a cuando yo selecciono algo*/
+    background-color: chocolate;
+    color: lime;
+}
+
+.listado li::marker { /* Dentro de la clase listado, a todos los li, ponle color rojo a los puntos*/
+    color: red;
+}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudoclases</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hover {
+            width: 300px;
+            height: 100px;
+            background-color: bisque;
+        }
+
+        .hover:hover { /* Se activa en cuanto el ratón pasa por encima */
+            background-color: burlywood;
+        }
+
+        .listado {
+            padding: 15px;
+            background-color: aquamarine;
+        }
+
+        .listado p:first-child { /* Afecte a todos los (<p>) que sean el primer elemento dentro de una clase listado */
+            color: white;
+        }
+
+        a:link{ /* Hace referencia a link no visitado todavía */
+            color: deeppink;
+        }
+
+        a:visited{ /* Hace referencia a un link visitado */
+            color: crimson;
+        }
+
+        a:hover{
+            color: pink;
+        }
+
+        a:active{ /* Hace referencia a un enlace al cual se le hace click */
+            color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div class="hover">
+    <p>
+        Lorem ipsum dolor sit amet, nesciuntur adipisicing elit, sed do eiusmod tempor incididunt temporal ex ea commodo
+        consequat.
+    </p>
+</div>
+<div class="listado">
+    <p>Parrafo 1</p>
+    <p>Parrafo 2</p>
+    <p>Parrafo 3</p>
+    <p>Parrafo 4</p>
+</div>
+<div class="enlaces">
+    <a href="https://google.com" target="_blank">Enlace a google</a>
+    <a href="https://facebook.com" target="_blank">Enlace a Facebook</a>
+</div>
+</body>
+</html>
